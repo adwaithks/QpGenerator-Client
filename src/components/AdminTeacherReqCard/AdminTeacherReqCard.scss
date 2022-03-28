@@ -1,5 +1,5 @@
 .admin-teacher-req-card {
-  width: 450px;
+  width: 500px;
   height: fit-content;
   box-shadow: 0 0 30px rgb(20, 20, 20);
   background-color: rgba(37, 37, 37, 0.527);
@@ -27,8 +27,10 @@
 
 
   .admin-teacher-accept-container{
+    display: flex;
+    justify-content: space-between;
     button {
-      width: 50%;
+      width: 49%;
       padding: 10px;
       font-size: 1.05em;
       outline: none;
@@ -42,10 +44,18 @@
     .accept-btn {
       background-color: green;
       color: white;
+      border-radius: 4px;
     }
     .decline-btn {
-      background-color: red; 
-      color: white;   
-}
+      border-radius: 4px;
+      background-color: rgba(37, 37, 37, 0.527);
+      color: white;  
+      border: red solid 2px; 
+      
+      &:hover {
+        background-color: red;
+      }
+
+    } 
   }
 }
