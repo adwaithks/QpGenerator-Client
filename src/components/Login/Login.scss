@@ -1,0 +1,66 @@
+
+.login {
+  border: rgb(145, 145, 145) solid 1px;
+  padding: 15px;
+  border-radius: 4px;
+  width: 420px;
+  height: fit-content;
+  box-shadow: 0 0 30px rgba(29, 29, 29, 0.534);
+}
+
+.login-head {
+    h1 {
+    font-size: 2.5em;
+  }
+}
+
+.email-container, .password-container, .name-container, .id-container, .collegename-container, .login-button-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  label {
+    display: flex;
+    font-size: 0.95em;
+    justify-content: flex-start;
+  }
+  input {
+    outline: none;
+    padding: 9px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: rgb(190, 190, 190) solid 1px;
+
+    &:focus {
+      border: blue solid 1px;
+    }
+  }
+}
+
+.login-button-container {
+  justify-content: center;
+  margin-top: 15px;
+  align-items: center;
+  button {
+    width: 100%;
+    background-color: rgb(20, 20, 197);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2em;
+    padding: 8px;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.login-to-signup-links {
+  span {
+    text-decoration: underline;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+}

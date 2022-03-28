@@ -1,0 +1,51 @@
+.admin-teacher-req-card {
+  width: 450px;
+  height: fit-content;
+  box-shadow: 0 0 30px rgb(20, 20, 20);
+  background-color: rgba(37, 37, 37, 0.527);
+  border: rgb(117, 117, 117) solid 1px;
+  border-radius: 4px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+
+  .admin-teacher-name, .admin-teacher-regno, .admin-teacher-clgname, .admin-teacher-email {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    h1 {
+      color: white;
+    }
+
+    h3 {
+      font-weight: 400;
+      color: white;
+    }
+
+  }
+
+
+  .admin-teacher-accept-container{
+    button {
+      width: 50%;
+      padding: 10px;
+      font-size: 1.05em;
+      outline: none;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+    .accept-btn {
+      background-color: green;
+      color: white;
+    }
+    .decline-btn {
+      background-color: red; 
+      color: white;   
+}
+  }
+}
