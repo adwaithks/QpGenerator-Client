@@ -2,7 +2,6 @@ import React from 'react'
 import Login from '../../components/Login/Login'
 import './Home.scss';
 import { FaRegPaperPlane } from 'react-icons/fa';
-import Signup from '../../components/Signup/Signup';
 
 function Home() {
   return (

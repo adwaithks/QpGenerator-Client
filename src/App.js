@@ -1,9 +1,10 @@
 import './App.css';
 import Home from './pages/Home/Home';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Signup from './components/Signup/Signup';
 import SignupPage from './pages/SignupPage/SignupPage';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import InstDasboard from './pages/InstDashboard/InstDasboard';
+import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/institution/dashboard" element={<InstDasboard />} />
+          <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </Router>
@@ -19,6 +22,6 @@ function App() {
   );
 }
 
-//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
+//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
 
 export default App;
