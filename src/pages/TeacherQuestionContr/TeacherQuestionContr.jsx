@@ -13,7 +13,9 @@ function TeacherQuestionContr() {
         {
             id: 1,
             question: 'What is Black Box?',
-            subject: 'Physics'
+            subject: 'Physics',
+            difficulty: 'Easy',
+            module: '1'
         }
     ])
 
@@ -21,6 +23,8 @@ function TeacherQuestionContr() {
     const [generating, setGenerating] = React.useState(false);
     const [publish, setPublish] = React.useState(false);
     const [subject, setSubject] = React.useState('English');
+    const [subDiff, setSubDiff] = React.useState('Easy');
+    const [subModule, setSubModule] = React.useState('1');
     const [modalIsOpen, setIsOpen] = React.useState(false);
   
     function openModal() {
@@ -29,6 +33,14 @@ function TeacherQuestionContr() {
   
     function closeModal() {
       setIsOpen(false);
+    }
+
+    function handleSubModule(e) {
+      setSubModule(e.target.value);
+    }
+
+    function handleSubDiff(e) {
+      setSubDiff(e.target.value);
     }
   
     function handleChange(e) {
@@ -63,21 +75,51 @@ function TeacherQuestionContr() {
           </Select>
         </div>
         <div className='qp-input'>
+          <h1>Enter Question</h1>
           <textarea value={question} onChange={(e) => {setQuestion(e.target.value)}} placeholder="Enter your question..." name="" id="" cols="30" rows="5"></textarea>
+        </div>
+        <div className='sub-select-container'>
+          <h1>Select Difficulty</h1>
+          <Select
+            labelId="demo-simple-select-label"
+            className='sub-select'
+            value={subDiff}
+            label="Age"
+            onChange={handleSubDiff}
+          >
+            <MenuItem value={'Easy'}>Easy</MenuItem>
+            <MenuItem value={'Medium'}>Medium</MenuItem>
+            <MenuItem value={'Hard'}>Hard</MenuItem>
+          </Select>
+        </div>
+        <div className='sub-select-container'>
+          <h1>Select Module</h1>
+          <Select
+            labelId="demo-simple-select-label"
+            className='sub-select'
+            value={subModule}
+            label="Age"
+            onChange={handleSubModule}
+          >
+            <MenuItem value={'1'}>1</MenuItem>
+            <MenuItem value={'2'}>2</MenuItem>
+            <MenuItem value={'3'}>3</MenuItem>
+            <MenuItem value={'4'}>4</MenuItem>
+            <MenuItem value={'5'}>5</MenuItem>
+            <MenuItem value={'6'}>6</MenuItem>
+          </Select>
         </div>
         <div className='qp-publish-container'>
           {
             publish ? (<button style={{ opacity: 0.7 }}>Publishing...Please Wait</button>) : (<button onClick={() => {
                 setPublish(true);
                 setTimeout(() => {
-                setQp(qp => [...qp, {id: qp[qp.length - 1]['id'] + 1, question: question, subject: subject}])
+                setQp(qp => [...qp, {id: qp[qp.length - 1]['id'] + 1, question: question, subject: subject, module: subModule, difficulty: subDiff}])
                 closeModal();
-                console.log(qp)
                 setPublish(false);
               }, 3000);
             }}>Publish Question</button>)
           }
-
         </div>
       </Modal>
         <div className='pub-new-question' onClick={() => {openModal()}}>
@@ -90,7 +132,7 @@ function TeacherQuestionContr() {
             <div className='contr-questions'>
                 {
                     qp.map((item) => {
-                        return (<QuestionCard key={item.id} question={item.question} subject={item.subject} />)
+                        return (<QuestionCard modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} key={item.id} question={item.question} subject={item.subject} difficulty={item.difficulty} module={item.module} />)
                     })
                 }
             </div>

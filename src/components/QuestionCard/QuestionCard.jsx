@@ -3,7 +3,7 @@ import './QuestionCard.scss';
 import {FiEdit} from 'react-icons/fi';
 import {MdDone} from 'react-icons/md';
 
-function QuestionCard({subject, question}) {
+function QuestionCard({subject, question, module, difficulty}) {
 
     const [isEditing, setIsEditing] = React.useState(false);
 
@@ -19,7 +19,11 @@ function QuestionCard({subject, question}) {
             }
         </div>
         <h3 contentEditable={isEditing}>{question}</h3>
-        <h5 contentEditable={isEditing}>{subject}</h5>
+        <div className='sub-info'>
+        <h5 contentEditable={isEditing} className='sub-subject'>{subject}</h5>
+        <h5>Module <h4 contentEditable={isEditing} className='sub-module'>{module}</h4></h5>
+        <h5 contentEditable={isEditing} className='sub-difficulty'>{difficulty}</h5>
+        </div>
     </div>
   )
 }

@@ -40,6 +40,13 @@
     margin-top: 20px !important;
 }
 
+.sub-select-container {
+    h1 {
+        color: black;
+        font-size: 1em !important;
+    }
+}
+
 .sub-select {
     color: black !important;
     font-size: 1.2em !important;
@@ -48,6 +55,10 @@
 }
 
 .qp-input {
+    h1 {
+        font-size: 1em;
+        font-weight: 400;
+    }
     width: 90%;
     margin: auto;
     textarea {
@@ -67,5 +78,10 @@
     }
 
     .contr-questions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
 }
