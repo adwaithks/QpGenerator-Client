@@ -36,6 +36,7 @@ function InstDasboard() {
                     }}>Edit</button>
                 )
             }
+            <button className='inst-logout'>Logout</button>
         </div>
     </div>
   )

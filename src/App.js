@@ -5,6 +5,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import InstDasboard from './pages/InstDashboard/InstDasboard';
 import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard';
+import TeacherQuestionContr from './pages/TeacherQuestionContr/TeacherQuestionContr';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/teacher/dashboard/manage" element={<TeacherQuestionContr />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/institution/dashboard" element={<InstDasboard />} />
           <Route path="/teacher/dashboard" element={<TeacherDashboard />} />

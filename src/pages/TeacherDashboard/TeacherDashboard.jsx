@@ -1,36 +1,20 @@
 import React from 'react';
+import TeacherDashNav from '../../components/TeacherDashNav/TeacherDashNav';
 import './TeacherDashboard.scss';
+import {BiUser} from 'react-icons/bi';
 
 function TeacherDashboard() {
 
-  const [currentView, setCurrentView] = React.useState('questions');
   const [editing, setEditing] = React.useState(false);
 
   return (
     <div className='teacher-dashboard'>
-      <div className='teacher-category'>
-          {
-            currentView == 'questions' ? (
-              <>
-                <h2 className='cat-active'>Manage Questions</h2>
-                <h2 onClick={() => { setCurrentView('profile') }} className='cat-inactive'>Edit Profile</h2>
-              </>
-            ) : (
-              <>
-                <h2 onClick={() => { setCurrentView('questions') }} className='cat-inactive'>Manage Questions</h2>
-                <h2 className='cat-active'>Edit Profile</h2>
-              </>
-            )
-          }
-        </div>
-      <div className='teacher-activity'>
-        {
-          currentView == 'questions' ? (
-            <>
-              
-            </>
-          ) : (
-            <>
+      <TeacherDashNav />
+          <div className='teacher-dash-profile'>
+            <div className='teacher-dash-profile-pic'>
+              <BiUser className='teacher-profile-pic-icon' />
+              <h1>Adwaith</h1>
+            </div>
               <div className='name-container'>
                   <label htmlFor="">Full Name</label>
                   <input placeholder='Full Name' type="text" disabled={!editing} />
@@ -63,11 +47,9 @@ function TeacherDashboard() {
                     }}>Edit</button>
                 )
             }
-        </div>
-            </>
-          )
-        }
-      </div>
+              <button className='teacher-dash-logout'>Logout</button>
+              </div>
+              </div>
     </div>
   )
 }

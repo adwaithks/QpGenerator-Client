@@ -1,0 +1,71 @@
+.pub-new-question {
+    width: 90%;
+    margin-bottom: 50px !important;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border: black dashed 3px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 1.2em;
+    box-shadow:  0 0 30px rgba(0, 0, 0, 0.253);
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .teacher-qp-add-icon {
+            margin-right: 10px;
+            font-size: 3em;
+            color: white !important;
+        }
+    }
+
+}
+
+.admin-qpgen-modal {
+    background-color: white !important;
+    padding: 15px !important;
+}
+
+.qp-publish-container {
+    margin-top: 20px !important;
+}
+
+.sub-select {
+    color: black !important;
+    font-size: 1.2em !important;
+    width: 100% !important;
+    background-color: rgb(230, 230, 230) !important;
+}
+
+.qp-input {
+    width: 90%;
+    margin: auto;
+    textarea {
+        width: 100%;
+        margin: auto !important;
+        padding: 5px;
+        font-size: 1.2em;
+    }
+}
+
+.contributions {
+    margin-top: 20px !important;
+    width: 90%;
+    margin: auto;
+    .contr-questions-head {
+        width: 100%;
+    }
+
+    .contr-questions {
+    }
+}

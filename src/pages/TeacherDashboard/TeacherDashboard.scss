@@ -8,19 +8,30 @@
     margin: auto;
 }
 
-.teacher-category {
-    margin-bottom: 30px !important;
+.teacher-dash-profile {
     width: 90%;
     margin: auto;
-    padding: 30px;
-    cursor: pointer;
-    display: flex;
+    margin-top: 20px;
+}
 
-    h2 {
-        width: 50%;
-        padding: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.teacher-dash-profile-pic {
+    background-color: rgba(196, 196, 196, 0.218);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        font-size: 2.8em;
     }
+}
+
+.teacher-profile-pic-icon {
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    font-size: 15em !important;
 }

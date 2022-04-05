@@ -58,6 +58,9 @@
 }
 
 .login-to-signup-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   span {
     text-decoration: underline;
     font-size: 0.9em;
