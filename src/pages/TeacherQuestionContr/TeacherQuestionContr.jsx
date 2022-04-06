@@ -51,7 +51,7 @@ function TeacherQuestionContr() {
     <div>
         <TeacherDashNav />
         <Modal
-        className="admin-qpgen-modal"
+        className="teacher-qpgen-modal"
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={{
@@ -61,7 +61,7 @@ function TeacherQuestionContr() {
         }}
       >
         <div className='sub-select-container'>
-          <h1>Select Subject</h1>
+          <h1 className='sub-select-head'>Select Subject</h1>
           <Select
             labelId="demo-simple-select-label"
             className='sub-select'

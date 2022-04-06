@@ -31,7 +31,15 @@
 
 }
 
-.admin-qpgen-modal {
+.teacher-qpgen-modal {
+    border: rgb(73, 73, 73) solid 1px;
+    border-radius: 4px;
+    position: absolute;
+    padding: 20px;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    width: 800px;
+    height: fit-content;
     background-color: white !important;
     padding: 15px !important;
 }
@@ -41,8 +49,8 @@
 }
 
 .sub-select-container {
-    h1 {
-        color: black;
+    .sub-select-head {
+        color: white !important;
         font-size: 1em !important;
     }
 }
