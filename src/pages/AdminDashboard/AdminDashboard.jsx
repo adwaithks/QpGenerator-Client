@@ -2,13 +2,17 @@ import React from 'react';
 import AdminTeacherReqCard from '../../components/AdminTeacherReqCard/AdminTeacherReqCard';
 import './AdminDashboard.scss';
 import { AiOutlineFileAdd } from 'react-icons/ai';
+import { IoIosArrowDropright } from 'react-icons/io';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Modal from 'react-modal';
+import InstReqCard from '../../components/InstReqCard/InstReqCard';
+import CourseCard from '../../components/CourseCard/CourseCard';
 
 
 function AdminDashboard() {
   const [generating, setGenerating] = React.useState(false);
+  const [courseViewing, setCourseViewing] = React.useState(false);
   const [publish, setPublish] = React.useState(false);
   const [currentView, setCurrentView] = React.useState('pending');
   const [subject, setSubject] = React.useState('English');
@@ -139,6 +143,29 @@ function AdminDashboard() {
       <div className='qp-gen-container' onClick={() => { openModal() }}>
         <h1><AiOutlineFileAdd className='gen-qp-icon' />Generate Question Paper</h1>
       </div>
+      <div className='create-course-container'>
+        <div className='create-course-btn-container'>
+          <button>Create New Course</button>
+        </div>
+        <div className='courses-container'>
+          <div className='create-course-head' onClick={() => { setCourseViewing(!courseViewing) }}>
+            <h1>Active Courses</h1>
+            <IoIosArrowDropright className='side-arrow-icon' />
+          </div>
+          {
+            courseViewing ? (
+              <div className='courses-list'>
+                <CourseCard name="Data Mining" code="CS401" branch="CSE" />
+                <CourseCard name="Data Mining" code="CS401" branch="CSE" />
+                <CourseCard name="Data Mining" code="CS401" branch="CSE" />
+
+              </div>
+            ) : (null)
+          }
+
+        </div>
+
+      </div>
       <div className='admin-activity'>
         <div className='admin-category'>
           {
@@ -158,6 +185,7 @@ function AdminDashboard() {
         {
           currentView == 'pending' ? (
             <div className='pending-reqs'>
+              <InstReqCard name="College of Engineering Kallooppara" instno="PTA" email="cek@gmail.com" />
               <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
               <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
               <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />

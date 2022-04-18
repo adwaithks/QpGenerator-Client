@@ -1,6 +1,7 @@
 import React from 'react';
 import './Signup.scss';
 import { useNavigate } from 'react-router-dom';
+import AutoCompleteInput from '../AutoCompleteInput/AutoCompleteInput';
 
 function Signup() {
 
@@ -43,7 +44,8 @@ function Signup() {
                 </div>
                 <div className='collegename-container'>
                   <label htmlFor="">College</label>
-                  <input placeholder='College Name' type="email" />
+                  <AutoCompleteInput />
+                  {/*<input placeholder='College Name' type="email" />*/}
                 </div>
                 <div className='email-container'>
                   <label htmlFor="">Email Id</label>
