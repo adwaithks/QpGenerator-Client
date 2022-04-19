@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminTeacherReqCard from '../../components/AdminTeacherReqCard/AdminTeacherReqCard';
 import './AdminDashboard.scss';
-import { AiOutlineFileAdd } from 'react-icons/ai';
+import { AiOutlineFileAdd, AiOutlineLogout } from 'react-icons/ai';
 import { IoIosArrowDropright } from 'react-icons/io';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,6 +12,11 @@ import CourseCard from '../../components/CourseCard/CourseCard';
 
 function AdminDashboard() {
   const [generating, setGenerating] = React.useState(false);
+  const [courseModalIsOpen, setCourseModalIsOpen] = React.useState(false);
+  const [courseName, setCourseName] = React.useState('');
+  const [courseSem, setCourseSem] = React.useState('S1');
+  const [courseCode, setCourseCode] = React.useState('')
+  const [courseBranch, setCourseBranch] = React.useState('CSE');
   const [courseViewing, setCourseViewing] = React.useState(false);
   const [publish, setPublish] = React.useState(false);
   const [currentView, setCurrentView] = React.useState('pending');
@@ -20,6 +25,7 @@ function AdminDashboard() {
   const [partBDiff, setPartBDiff] = React.useState('easy');
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [previewIsOpen, setPreviewIsOpen] = React.useState(false);
+  const [courseList, setCourseList] = React.useState([]);
 
   function openModal() {
     setIsOpen(true);
@@ -43,6 +49,9 @@ function AdminDashboard() {
 
   return (
     <div className='admin-dashboard'>
+      <div className='admin-logout-container'>
+        <button><AiOutlineLogout className='logout-icon' />Logout</button>
+      </div>
       <Modal
         className='preview-modal'
         isOpen={previewIsOpen}
@@ -140,24 +149,101 @@ function AdminDashboard() {
 
         </div>
       </Modal>
+      <Modal
+        className="admin-qpgen-modal"
+        isOpen={courseModalIsOpen}
+        onRequestClose={() => {
+          setCourseModalIsOpen(false);
+        }}
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.9)'
+          }
+        }}
+      >
+        <div className='course-modal-contents'>
+          <div className='course-name-container'>
+            <label htmlFor="">Course Name</label>
+            <input value={courseName} onChange={(e) => { setCourseName(e.target.value) }} placeholder='Course Name' type="text" />
+          </div>
+          <div className='sub-select-container'>
+            <label htmlFor="">Branch</label>
+            <Select
+              labelId="demo-simple-select-label"
+              className='sub-select'
+              value={courseBranch}
+              label="Age"
+              onChange={(e) => {
+                setCourseBranch(e.target.value)
+              }}
+            >
+              <MenuItem value={'CSE'}>Computer Science (CSE)</MenuItem>
+              <MenuItem value={'EEE'}>Electrical (EEE)</MenuItem>
+              <MenuItem value={'ECE'}>Electronics (ECE)</MenuItem>
+            </Select>
+          </div>
+          <div className='course-code-container'>
+            <label htmlFor="">Course Code</label>
+            <input value={courseCode} onChange={(e) => { setCourseCode(e.target.value) }} placeholder='Course Code' type="text" />
+          </div>
+          <div className='sub-select-container'>
+            <label htmlFor="">Semester</label>
+            <Select
+              labelId="demo-simple-select-label"
+              className='sub-select'
+              value={courseSem}
+              label="Age"
+              onChange={(e) => { setCourseSem(e.target.value) }}
+            >
+              <MenuItem value={'S1'}>S1</MenuItem>
+              <MenuItem value={'S2'}>S2</MenuItem>
+              <MenuItem value={'S3'}>S3</MenuItem>
+              <MenuItem value={'S4'}>S4</MenuItem>
+              <MenuItem value={'S5'}>S5</MenuItem>
+              <MenuItem value={'S6'}>S6</MenuItem>
+              <MenuItem value={'S7'}>S7</MenuItem>
+              <MenuItem value={'S8'}>S8</MenuItem>
+            </Select>
+          </div>
+          <div className='create-course-modal-btn-container'>
+            <button onClick={() => {
+              const newCourse = {
+                name: courseName,
+                branch: courseBranch,
+                semester: courseSem,
+                code: courseCode
+              }
+              setCourseList(prev => [...prev, newCourse]);
+              setCourseModalIsOpen(false);
+            }}>Create New Course</button>
+          </div>
+        </div>
+
+
+      </Modal>
       <div className='qp-gen-container' onClick={() => { openModal() }}>
         <h1><AiOutlineFileAdd className='gen-qp-icon' />Generate Question Paper</h1>
       </div>
       <div className='create-course-container'>
         <div className='create-course-btn-container'>
-          <button>Create New Course</button>
+          <button onClick={() => { setCourseModalIsOpen(true) }}>Create New Course</button>
         </div>
         <div className='courses-container'>
-          <div className='create-course-head' onClick={() => { setCourseViewing(!courseViewing) }}>
+          <div className='create-course-head' onClick={() => {
+            setCourseViewing(!courseViewing)
+          }}>
             <h1>Active Courses</h1>
             <IoIosArrowDropright className='side-arrow-icon' />
           </div>
           {
             courseViewing ? (
               <div className='courses-list'>
-                <CourseCard name="Data Mining" code="CS401" branch="CSE" />
-                <CourseCard name="Data Mining" code="CS401" branch="CSE" />
-                <CourseCard name="Data Mining" code="CS401" branch="CSE" />
+                <CourseCard name="Data Mining" semester="S7" code="CS401" branch="CSE" />
+                {
+                  courseList.map((course, idx) => (
+                    <CourseCard key={idx} name={course.name} semester={course.semester} code={course.code} branch={course.branch} />
+                  ))
+                }
 
               </div>
             ) : (null)
@@ -172,12 +258,12 @@ function AdminDashboard() {
             currentView == 'pending' ? (
               <>
                 <h2 className='cat-active'>Pending Requests</h2>
-                <h2 onClick={() => { setCurrentView('teachers') }} className='cat-inactive'>Teachers Onboard</h2>
+                <h2 onClick={() => { setCurrentView('teachers') }} className='cat-inactive'>Onboard</h2>
               </>
             ) : currentView == 'teachers' ? (
               <>
                 <h2 onClick={() => { setCurrentView('pending') }} className='cat-inactive'>Pending Requests</h2>
-                <h2 className='cat-active'>Teachers Onboard</h2>
+                <h2 className='cat-active'>Onboard</h2>
               </>
             ) : null
           }
@@ -185,15 +271,36 @@ function AdminDashboard() {
         {
           currentView == 'pending' ? (
             <div className='pending-reqs'>
-              <InstReqCard name="College of Engineering Kallooppara" instno="PTA" email="cek@gmail.com" />
-              <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
-              <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
-              <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
-              <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
+              <div className='inst-req-container'>
+                <div className='inst-req-head'><h1>Institutions</h1></div>
+                <div className='req-list'>
+                  <InstReqCard name="College of Engineering Kallooppara" instno="PTA" email="cek@gmail.com" />
+                </div>
+              </div>
+              <div className='teacher-req-container'>
+                <div className='teacher-req-head'><h1>Teachers</h1></div>
+                <div className='req-list'>
+                  <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
+                  <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
+                  <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
+                  <AdminTeacherReqCard name="Adwaith KS" regno="PTA18CS001" clgname="College of Engineering Kallooppara" email="adwaith@gmail.com" />
+                </div>
+              </div>
             </div>
           ) : currentView == 'teachers' ? (
-            <div className='teachers-onboard'>
-              <h1>No teachers has enrolled.</h1>
+            <div className='pending-reqs'>
+              <div className='inst-req-container'>
+                <div className='inst-req-head'><h1>Institutions</h1></div>
+                <div className='req-list'>
+                  <h1 className='no-inst'>No Institutions Enrolled.</h1>
+                </div>
+              </div>
+              <div className='teacher-req-container'>
+                <div className='teacher-req-head'><h1>Teachers</h1></div>
+                <div className='req-list'>
+                  <h1 className='no-teacher'>No Teachers Enrolled.</h1>
+                </div>
+              </div>
             </div>
           ) : (null)
         }

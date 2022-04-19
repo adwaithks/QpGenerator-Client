@@ -5,6 +5,39 @@
   background-color: black;
 }
 
+.admin-logout-container {
+  display: flex;
+  margin-top: 20px !important;
+  justify-content: flex-end;
+  width: 95%;
+  margin: auto;
+
+  .logout-icon {
+    color: white;
+    margin-right: 10px;
+    font-size: 1.5em;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(218, 0, 0);
+    color: white;
+    font-size: 1.3em;
+    padding: 8px;
+    width: 180px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: red solid 1px;
+    outline: none;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
 .qp-gen-container {
   border: rgb(49, 49, 49) dashed 4px;
   height: 200px;
@@ -16,6 +49,7 @@
   justify-content: center;
   width: 95%;
   margin: auto;
+
   h1 {
     color: gray;
     font-size: 3em;
@@ -32,6 +66,7 @@
     h1 {
       color: white;
     }
+
     border: white dashed 4px;
   }
 }
@@ -39,25 +74,46 @@
 .admin-activity {
   width: 95%;
   background-color: rgba(19, 19, 19, 0.719);
-  margin:auto;
-  height: 100vh;
+  margin: auto;
+  height: 100%;
   border: rgb(71, 71, 71) solid 1px;
   margin-top: 50px !important;
   border-radius: 3px;
 }
 
 .pending-reqs {
+
+  .teacher-req-container,
+  .inst-req-container {
+
+    .inst-req-head,
+    .teacher-req-head {
+      h1 {
+        color: white;
+        text-decoration: underline;
+        margin-bottom: 20px;
+      }
+    }
+
+    .req-list {
+
+      .no-inst,
+      .no-teacher {
+        color: rgb(92, 92, 92);
+      }
+
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
   width: 95%;
   height: fit-content !important;
   margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .admin-category {
-  display: flex;  
+  display: flex;
   margin-bottom: 20px !important;
   padding: 20px;
   width: 95%;
@@ -77,6 +133,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   h1 {
     margin-top: 50px;
     font-size: 3em;
@@ -101,9 +158,11 @@
 }
 
 
-.part-a-head, .part-b-head {
+.part-a-head,
+.part-b-head {
   width: 90%;
   margin: auto;
+
   h1 {
     color: white;
     font-weight: 400;
@@ -111,11 +170,13 @@
   }
 }
 
-.part-a-diff, .part-b-diff {
+.part-a-diff,
+.part-b-diff {
   display: flex;
   justify-content: center;
   padding: 10px;
   align-items: center;
+
   h1 {
     padding: 10px;
     cursor: pointer;
@@ -133,6 +194,7 @@
   margin-top: 50px !important;
   width: 90%;
   margin: auto;
+
   button {
     background-color: rgb(20, 20, 197);
     color: white;
@@ -152,12 +214,18 @@
 
 .sub-select-container {
   margin-bottom: 30px !important;
+
+  label {
+    color: white;
+  }
+
   h1 {
     color: white;
     font-weight: 400;
     font-size: 1em;
     font-weight: 400;
   }
+
   width: 90%;
   margin: auto;
 }
@@ -169,16 +237,17 @@
   background-color: rgb(53, 53, 53) !important;
 }
 
-.part-a-active, .part-b-active {
+.part-a-active,
+.part-b-active {
   background-color: rgb(20, 20, 197);
   color: white;
-    font-size: 1.3em;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
-    border: blue solid 1px;
-    outline: none;
+  font-size: 1.3em;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  border: blue solid 1px;
+  outline: none;
 }
 
 .preview-modal {
@@ -197,6 +266,7 @@
   width: 90%;
   margin: auto;
   height: 400px;
+
   h1 {
     display: flex;
     justify-content: center;
@@ -208,20 +278,21 @@
 .publish-btn-container {
   width: 90%;
   margin: auto;
+
   button {
     background-color: rgb(20, 20, 197);
     color: white;
-      font-size: 1.3em;
-      padding: 10px;
-      cursor: pointer;
-      width: 100%;
-      border-radius: 4px;
-      border: blue solid 1px;
-      outline: none;
+    font-size: 1.3em;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    border: blue solid 1px;
+    outline: none;
 
-      &:hover {
-        opacity: 0.7;
-      }
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 
@@ -231,7 +302,8 @@
   padding: 10px;
   border-radius: 4px;
   background-color: rgba(19, 19, 19, 0.719);
-  border: rgb(71, 71, 71) solid 1px;}
+  border: rgb(71, 71, 71) solid 1px;
+}
 
 .create-course-btn-container {
   display: flex;
@@ -248,6 +320,11 @@
     padding: 10px;
     border: none;
     box-shadow: 0 0 30px rgb(24, 24, 24);
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
 }
@@ -265,11 +342,12 @@
     border-radius: 4px;
     background-color: rgba(29, 29, 29, 0.452);
     padding: 10px;
-      h1 {
-        color: white;
-      }
+
+    h1 {
+      color: white;
+    }
   }
-  
+
   .courses-list {
     background-color: rgba(29, 29, 29, 0.452);
     height: fit-content;
@@ -282,19 +360,50 @@
 }
 
 
+.course-modal-contents {}
 
+.course-name-container,
+.course-code-container {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 
+  label {
+    color: white !important;
+  }
 
+  input {
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: 1.15em;
+    padding: 15px;
+  }
+}
 
+.create-course-modal-btn-container {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  button {
+    background-color: rgb(20, 20, 197);
+    color: white;
+    font-size: 1.3em;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    border: blue solid 1px;
+    outline: none;
 
-
-
-
-
-
-
-
-
-
-
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
